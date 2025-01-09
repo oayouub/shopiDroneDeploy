@@ -1,0 +1,54 @@
+// Colors
+$color-black: #000;
+$color-grey: #c7c7c7;
+$color-light-grey: #F2F2F2;
+$color-white: #FFF;
+$color-blue: #27377C;
+$color-dark-blue: #2B3441;
+$color-trustpilot: #00B67A;
+
+// Fonts
+$light: 200;
+$thin: $light;
+$regular: 400;
+$normal: $regular;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$heavy: 900;
+$extra-bold: $heavy;
+$black: $heavy;
+
+// Sizes
+$breakpoint-small-desktop: 1275;
+$breakpoint-tablet: 1024;
+$breakpoint-tablet-portrait: 960;
+$breakpoint-mobile: 767;
+
+$large-desktop: "(min-width:#{$breakpoint-small-desktop + 1}px)";
+$desktop: "(min-width:#{$breakpoint-tablet + 1}px)";
+$small-desktop: "(max-width:#{$breakpoint-small-desktop + 1}px)";
+$tablet: "(max-width:#{$breakpoint-tablet}px)";
+$tablet-portrait: "(max-width:#{$breakpoint-tablet-portrait}px)";
+$nomobile : "(min-width:#{$breakpoint-mobile+1}px)";
+$mobile: "(max-width:#{$breakpoint-mobile}px)";
+
+// Wrappers
+$wrappers: (
+    "small": 840,
+    "medium": 940,
+    "large": 1200,
+    "xlarge": 1440
+);
+
+:root {
+    --scrollbar-width: 0px;
+    --wrapper-padding: 40px;
+    --navbar-height: 80px;
+    --vh: 1vh;
+    font-family: 'Montserrat', sans-serif;
+
+    @media #{$mobile} {
+        --wrapper-padding: 30px;
+    }
+}

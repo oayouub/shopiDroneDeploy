@@ -1,0 +1,38 @@
+@use '../../assets/styles/variables';
+
+.trustpilot {
+    margin-bottom: 24px;
+    gap: 16px;
+
+    .note {
+        gap: 3px;
+        margin: 12px 0;
+
+        .star {
+            background-color: variables.$color-trustpilot;
+            width: 30px;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            > .ico {
+                width: 20px;
+                position: relative;
+                z-index: 10;
+            }
+
+            &.-half:before {
+                content: '';
+                height: 100%;
+                width: 50%;
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 5;
+                background-color: variables.$color-light-grey;
+            }
+        }
+    }
+}

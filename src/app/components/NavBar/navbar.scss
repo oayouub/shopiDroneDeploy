@@ -1,0 +1,251 @@
+/* /app/components/NavBar/Navbar.scss */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  
+    .navbar-left {
+      display: flex;
+      align-items: center;
+  
+      .navbar-logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #0070f3;
+        text-decoration: none;
+        margin-right: 40px; // Espace entre le logo et les liens
+      }
+  
+      .navbar-items {
+        display: flex;
+        align-items: center;
+  
+        .nav-item {
+          position: relative;
+          padding: 15px 25px;
+          color: #333;
+          text-decoration: none;
+          font-size: 18px;
+          transition: color 0.3s;
+          cursor: pointer;
+          overflow: hidden; // Empêche le débordement
+  
+          &:hover {
+            color: #ffffff;
+          }
+  
+          /* Classe active */
+          &.active {
+            color: #ffffff; // Texte blanc pour l'actif
+          }
+  
+          /* Séparateur diagonal à droite sauf pour le dernier élément */
+          &:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2px; // Épaisseur du séparateur
+            height: 100%;
+            background-color: #0070f3; // Séparateur en bleu
+            transform: skewY(-45deg);
+            transform-origin: top right;
+          }
+  
+          /* Effet de remplissage au survol */
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0070f3;
+            z-index: -1;
+            transform: scaleX(0); // Initialement masqué
+            transform-origin: left;
+            transition: transform 0.3s ease;
+          }
+  
+          &:hover::before {
+            transform: scaleX(1); // Remplit le fond au survol
+          }
+  
+          /* Effet de remplissage pour l'élément actif */
+          &.active::before {
+            transform: scaleX(1); // Remplit le fond pour l'actif
+          }
+        }
+      }
+    }
+  
+    .navbar-right {
+      display: flex;
+      align-items: center;
+  
+      .login-link {
+        font-size: 16px;
+        color: #0070f3;
+        text-decoration: none;
+        padding: 10px 20px;
+        border: 1px solid #0070f3;
+        border-radius: 4px;
+        transition: background-color 0.3s, color 0.3s;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #0070f3;
+          color: #ffffff;
+        }
+      }
+  
+      .profile-container {
+        position: relative;
+        margin-left: 25px;
+  
+        .profile-icon {
+          cursor: pointer;
+          color: #0070f3;
+          transition: color 0.3s;
+  
+          &:hover {
+            color: #005bb5;
+          }
+        }
+  
+        .dropdown-menu {
+          position: absolute;
+          right: 0;
+          top: 50px;
+          background-color: #ffffff;
+          border: 1px solid #eaeaea;
+          border-radius: 4px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          width: 160px;
+          z-index: 1000;
+  
+          .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            color: #333333;
+            text-decoration: none;
+            cursor: pointer;
+            background-color: #ffffff;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s;
+  
+            &:hover {
+              background-color: #f0f0f0;
+            }
+  
+            svg {
+              margin-right: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Assurez-vous que le texte reste au-dessus du fond coloré */
+  .navbar-left .navbar-items .nav-item {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Styles pour le lien actif */
+  .navbar-left .navbar-items .nav-item.active::before {
+    transform: scaleX(1);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  
+      .navbar-left {
+        flex-direction: column;
+        align-items: flex-start;
+  
+        .navbar-logo {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+  
+        .navbar-items {
+          flex-direction: column;
+          width: 100%;
+  
+          .nav-item {
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+  
+            &:before {
+              transform: scaleX(0);
+            }
+  
+            &:hover::before {
+              transform: scaleX(1);
+            }
+  
+            &:not(:last-child)::after {
+              display: none; // Supprimer les séparateurs diagonaux sur mobile
+            }
+  
+            /* Effet de remplissage pour l'élément actif sur mobile */
+            &.active::before {
+              transform: scaleX(1);
+            }
+          }
+        }
+      }
+  
+      .navbar-right {
+        margin-top: 15px;
+        width: 100%;
+        justify-content: flex-start;
+  
+        .login-link {
+          width: auto;
+        }
+      }
+    }
+  }
+  
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  
+    .user-email {
+      font-size: 14px;
+      color: #333;
+    }
+  
+    .btn {
+      padding: 5px 10px;
+      background-color: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .btn:hover {
+      background-color: #005bb5;
+    }
+  }
+  

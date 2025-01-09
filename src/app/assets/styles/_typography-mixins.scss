@@ -1,0 +1,25 @@
+@use "variables";
+
+@mixin title-1() {
+    font-size: 24px;
+    font-weight: variables.$medium;
+    line-height: 42px;
+}
+
+@mixin title-3() {
+    font-size: 16px;
+    font-weight: variables.$bold;
+    line-height: 24px;
+}
+
+@mixin title-4() {
+    font-size: 18px;
+    font-weight: variables.$bold;
+    line-height: 24px;
+}
+
+@mixin body() {
+    font-size: 14px;
+    font-weight: variables.$bold;
+    line-height: 16px;
+}

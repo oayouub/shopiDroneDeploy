@@ -1,0 +1,37 @@
+@use '../../assets/styles/variables';
+
+.footer {
+    background-color: variables.$color-dark-blue;
+    color: variables.$color-white;
+    padding: 24px 0;
+    margin-top: 20px;
+
+    .grid {
+        gap: 24px;
+
+        .col {
+            > .title-3 {
+                text-transform: uppercase;
+                border-bottom: solid 1px variables.$color-light-grey;
+                padding-bottom: 10px;
+            }
+
+            > .link-container {
+                gap: 10px;
+                padding-top: 24px;
+            }
+        }
+    }
+
+    .footer-bottom {
+        margin-top: 122px;
+
+        .rs {
+            gap: 8px;
+
+            .ico {
+                line-height: 0;
+            }
+        }
+    }
+}

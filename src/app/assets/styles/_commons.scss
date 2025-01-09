@@ -1,0 +1,124 @@
+@use "functions";
+@use "variables";
+
+/* default classes */
+.center {
+    text-align: center;
+}
+
+.full {
+    @include functions.full();
+}
+
+.inline-list {
+    font-size: 0;
+
+    & > * {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.bkg-cover {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.bkg-contain {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.link-extend {
+    &:before {
+        content: '';
+        z-index: 1;
+        @include functions.full();
+    }
+}
+
+.ratio-wrapper {
+    position: relative;
+    --ratio-image: 56.25%;
+
+    &:before {
+        content: '';
+        display: block;
+        padding-bottom: var(--ratio-image);
+    }
+
+    &.-square {
+        --ratio-image: 100%;
+    }
+
+    &.-video {
+        --ratio-image: 56.25%;
+    }
+
+    &.-story {
+        --ratio-image: 177.77%;
+    }
+}
+
+.image-wrapper {
+    line-height: 0;
+    display: block;
+
+    svg, img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    &.-full {
+        svg, img {
+            width: 100%;
+        }
+    }
+}
+
+img, video {
+    &.cover {
+        object-fit: cover;
+    }
+
+    &.contain {
+        object-fit: contain;
+    }
+}
+
+.wrapper {
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+    position: relative;
+
+    &.-right {
+        margin-right: 0;
+    }
+
+    &.-left {
+        margin-left: 0;
+    }
+
+    &.-padded {
+        padding-left: var(--wrapper-padding);
+        padding-right: var(--wrapper-padding);
+    }
+
+    @each $name, $size in variables.$wrappers {
+        &.-#{$name} {
+            max-width: #{$size}px;
+
+            &.-padded {
+                max-width: calc(#{$size}px + var(--wrapper-padding) * 2);
+            }
+        }
+    }
+}
+
+.page {
+    padding-top: var(--navbar-height);
+    //min-height: calc(var(--vh) * 100);
+}

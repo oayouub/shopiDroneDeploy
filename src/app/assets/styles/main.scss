@@ -1,0 +1,19 @@
+@use "reset";
+@use 'typography';
+@use 'ui';
+@use "commons";
+
+@use "components/flex";
+@use "components/grid";
+@use 'components/_btn';
+
+@use "pages/home";
+
+@use "../../components/NavBar/navbar";
+@use "../../components/SellPush/sellpush";
+@use "../../components/Trustpilot/trustpilot";
+@use "../../components/Footer/footer";
+
+@use "../../dashboard/dashboard";
+@use "../../sell/sell";
+@use "../../product/[id]/DetailsItem";

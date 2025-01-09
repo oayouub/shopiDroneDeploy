@@ -1,0 +1,42 @@
+@use "variables";
+@use "typography-mixins";
+
+* {
+    -webkit-touch-callout: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+}
+
+h1, .title-1 {
+    @include typography-mixins.title-1;
+}
+
+h3, .title-3 {
+    @include typography-mixins.title-3;
+}
+
+h4, .title-4 {
+    @include typography-mixins.title-4;
+}
+
+body, .body {
+    @include typography-mixins.body;
+}
+
+a {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+hr {
+    background: currentColor;
+    height: 1px;
+    border: none;
+}
+
+.underline {
+    text-decoration: underline;
+}

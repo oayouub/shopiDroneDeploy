@@ -1,0 +1,27 @@
+@use "variables";
+
+/* default classes */
+:target, :focus {
+    scroll-margin-top: 100px;
+}
+
+#full-wrapper {
+    overflow: hidden;
+}
+
+body {
+    background-color: variables.$color-white;
+    color: variables.$color-black;
+}
+
+@media #{variables.$nomobile} {
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+@media #{variables.$mobile} {
+    .desktop-only {
+        display: none !important;
+    }
+}

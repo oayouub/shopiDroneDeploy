@@ -1,0 +1,18 @@
+/* /app/auth/AuthPage.scss */
+
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%); /* Exemple de dégradé */
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  @media (max-width: 600px) {
+    .auth-page {
+      padding: 20px;
+    }
+  }
+  

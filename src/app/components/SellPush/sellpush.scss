@@ -1,0 +1,21 @@
+@use '../../assets/styles/variables';
+
+.sell-push {
+    background-color: variables.$color-blue;
+    margin: 40px 0;
+    border-radius: 16px;
+    color: variables.$color-white;
+    text-align: center;
+    padding: 40px 0;
+
+    > .content {
+        gap: 17px;
+
+        > .sell-btn {
+            border-color: variables.$color-white;
+            color: variables.$color-white;
+            border-radius: 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+}

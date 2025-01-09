@@ -1,0 +1,106 @@
+/* /app/components/log/LoginRegister.scss */
+
+.login-register-container {
+    width: 400px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  
+    button {
+      flex: 1;
+      padding: 10px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-size: 16px;
+      color: #ffffff;
+      transition: border-bottom 0.3s, color 0.3s;
+  
+      &.active {
+        border-bottom: 2px solid #ffffff;
+        font-weight: bold;
+      }
+  
+      &:hover {
+        border-bottom: 2px solid #cccccc;
+      }
+    }
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #ffffff;
+    }
+  
+    .form-group {
+      margin-bottom: 15px;
+  
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #ffffff;
+      }
+  
+      input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+    }
+  
+    .error {
+      color: #ff4d4f;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    .success {
+      color: #52c41a;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    button {
+      padding: 10px;
+      background-color: #ffffff;
+      color: #000dff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s, color 0.3s;
+  
+      &:hover {
+        background-color: #000dff;
+        color: #ffffff;
+      }
+    }
+  }
+  
+  input:focus, button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ffffff;
+  }
+  
