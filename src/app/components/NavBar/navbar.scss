@@ -1,251 +1,273 @@
 /* /app/components/NavBar/Navbar.scss */
 
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  &.-large {
+    max-width: 1400px;
+  }
+
+  &.-padded {
+    padding: 0 2rem;
+  }
+}
+
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #eaeaea;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-  
-    .navbar-left {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  .navbar-top {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5e5e5;
+
+    .navbar-content {
       display: flex;
       align-items: center;
-  
-      .navbar-logo {
-        font-size: 28px;
-        font-weight: bold;
-        color: #0070f3;
-        text-decoration: none;
-        margin-right: 40px; // Espace entre le logo et les liens
+      gap: 2rem;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .navbar-logo {
+      flex-shrink: 0;
+      
+      img {
+        height: 40px;
+        width: auto;
       }
-  
-      .navbar-items {
+    }
+
+    .search-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      max-width: 700px;
+      
+      .search-input {
+        flex: 1;
+        height: 40px;
+        padding: 20px;
+        border: 2px solid #e5e5e5;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        
+        &:focus {
+          border-color: #27377c;
+          outline: none;
+        }
+      }
+
+      .search-button {
+        margin-left: -40px;
+        width: 40px;
+        height: 40px;
         display: flex;
         align-items: center;
-  
-        .nav-item {
-          position: relative;
-          padding: 15px 25px;
-          color: #333;
-          text-decoration: none;
-          font-size: 18px;
-          transition: color 0.3s;
-          cursor: pointer;
-          overflow: hidden; // Empêche le débordement
-  
-          &:hover {
-            color: #ffffff;
-          }
-  
-          /* Classe active */
-          &.active {
-            color: #ffffff; // Texte blanc pour l'actif
-          }
-  
-          /* Séparateur diagonal à droite sauf pour le dernier élément */
-          &:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 2px; // Épaisseur du séparateur
-            height: 100%;
-            background-color: #0070f3; // Séparateur en bleu
-            transform: skewY(-45deg);
-            transform-origin: top right;
-          }
-  
-          /* Effet de remplissage au survol */
-          &:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0070f3;
-            z-index: -1;
-            transform: scaleX(0); // Initialement masqué
-            transform-origin: left;
-            transition: transform 0.3s ease;
-          }
-  
-          &:hover::before {
-            transform: scaleX(1); // Remplit le fond au survol
-          }
-  
-          /* Effet de remplissage pour l'élément actif */
-          &.active::before {
-            transform: scaleX(1); // Remplit le fond pour l'actif
-          }
+        justify-content: center;
+        background: none;
+        border: none;
+        color: #666;
+        cursor: pointer;
+
+        &:hover {
+          color: #27377c;
         }
       }
     }
-  
+
     .navbar-right {
       display: flex;
       align-items: center;
-  
-      .login-link {
-        font-size: 16px;
-        color: #0070f3;
-        text-decoration: none;
-        padding: 10px 20px;
-        border: 1px solid #0070f3;
-        border-radius: 4px;
-        transition: background-color 0.3s, color 0.3s;
-        cursor: pointer;
-  
-        &:hover {
-          background-color: #0070f3;
-          color: #ffffff;
-        }
+      gap: 1rem;
+    }
+
+    .post-button {
+      padding: 12px 20px;
+      background-color: #27377c;
+      color: white;
+      border-radius: 10px;
+      font-weight: 500;
+      transition: background-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .ico {
+        width: 20px;
+        height: 20px;
       }
-  
-      .profile-container {
-        position: relative;
-        margin-left: 25px;
-  
-        .profile-icon {
-          cursor: pointer;
-          color: #0070f3;
-          transition: color 0.3s;
-  
-          &:hover {
-            color: #005bb5;
-          }
-        }
-  
-        .dropdown-menu {
-          position: absolute;
-          right: 0;
-          top: 50px;
-          background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          border-radius: 4px;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          width: 160px;
-          z-index: 1000;
-  
-          .dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            color: #333333;
-            text-decoration: none;
-            cursor: pointer;
-            background-color: #ffffff;
-            border: none;
-            width: 100%;
-            text-align: left;
-            transition: background-color 0.3s;
-  
-            &:hover {
-              background-color: #f0f0f0;
-            }
-  
-            svg {
-              margin-right: 8px;
-            }
-          }
-        }
+
+      &:hover {
+        background: #3f4f8f;
+        color: white;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .profile-container {
+      position: relative;
+      
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 5px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        min-width: 200px;
+        z-index: 1000;
+      }
+    }
+
+    .account-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+      
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
       }
     }
   }
-  
-  /* Assurez-vous que le texte reste au-dessus du fond coloré */
-  .navbar-left .navbar-items .nav-item {
-    position: relative;
-    z-index: 1;
+
+  .navbar-categories {
+    padding: 0.5rem 0;
+    background-color: #f8f9fa;
+
+    .categories-list {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      justify-content: center;
+      overflow-x: auto;
+      white-space: nowrap;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      max-width: 1400px;
+      margin: 0 auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .category-item {
+      color: #666;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #27377c;
+      }
+    }
   }
-  
-  /* Styles pour le lien actif */
-  .navbar-left .navbar-items .nav-item.active::before {
-    transform: scaleX(1);
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 16px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #2D3436;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #f5f7fa;
+      }
+
+      svg {
+        color: #636E72;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #e9ecef;
+      }
+    }
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-  
-      .navbar-left {
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    .navbar-top {
+      .navbar-content {
         flex-direction: column;
-        align-items: flex-start;
-  
-        .navbar-logo {
-          margin-right: 0;
-          margin-bottom: 15px;
-        }
-  
-        .navbar-items {
-          flex-direction: column;
-          width: 100%;
-  
-          .nav-item {
-            width: 100%;
-            text-align: left;
-            padding: 12px 20px;
-  
-            &:before {
-              transform: scaleX(0);
-            }
-  
-            &:hover::before {
-              transform: scaleX(1);
-            }
-  
-            &:not(:last-child)::after {
-              display: none; // Supprimer les séparateurs diagonaux sur mobile
-            }
-  
-            /* Effet de remplissage pour l'élément actif sur mobile */
-            &.active::before {
-              transform: scaleX(1);
-            }
-          }
-        }
+        gap: 1rem;
       }
-  
-      .navbar-right {
-        margin-top: 15px;
+
+      .search-container {
         width: 100%;
-        justify-content: flex-start;
-  
-        .login-link {
-          width: auto;
-        }
+        max-width: none;
+      }
+
+      .navbar-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    .navbar-categories {
+      .categories-list {
+        gap: 1rem;
       }
     }
   }
-  
-.user-info {
+}
+
+.search-container {
+  form {
     display: flex;
     align-items: center;
-    gap: 10px;
-  
-    .user-email {
-      font-size: 14px;
-      color: #333;
-    }
-  
-    .btn {
-      padding: 5px 10px;
-      background-color: #0070f3;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  
-    .btn:hover {
-      background-color: #005bb5;
-    }
+    width: 100%;
   }
+}
+
+.cart-icon {
+    position: relative;
+    color: #333;
+    text-decoration: none;
+    margin-left: 20px;
+    
+    .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #27377c;
+        color: white;
+        font-size: 12px;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 5px;
+    }
+}
   

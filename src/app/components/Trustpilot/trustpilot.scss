@@ -1,38 +1,282 @@
 @use '../../assets/styles/variables';
 
-.trustpilot {
-    margin-bottom: 24px;
-    gap: 16px;
+.trustpilot-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    position: relative;
+    
+    .section-title {
+        width: 100%;
+        max-width: 800px;
+        height: 80px;
+        margin: -20px auto 30px;
+        position: relative;
+        
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 45%, variables.$color-trustpilot 45%, variables.$color-trustpilot 55%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, variables.$color-trustpilot 45%, variables.$color-trustpilot 55%, transparent 55%);
+            background-size: 20px 20px;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .title-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 0 30px;
+            font-size: 24px;
+            font-weight: 600;
+            color: variables.$color-trustpilot;
+            white-space: nowrap;
+            z-index: 2;
+            box-shadow: 0 0 20px white;
+        }
+    }
+    
+    .trustpilot-reviews {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        
+        .review-card {
+            min-width: 300px;
+            padding: 20px;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            
+            .stars {
+                display: flex;
+                gap: 3px;
+                margin-bottom: 10px;
+                
+                .star {
+                    background-color: variables.$color-trustpilot;
+                    width: 20px;
+                    aspect-ratio: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    .ico {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+            }
+            
+            .verified {
+                color: #00b67a;
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .review-title {
+                font-weight: bold;
+                margin-bottom: 8px;
+            }
+            
+            .review-text {
+                color: #333;
+                margin-bottom: 12px;
+                white-space: pre-wrap;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            .review-author {
+                font-size: 14px;
+                color: #666;
+                
+                .name {
+                    font-weight: 500;
+                }
+                
+                .time {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+    
+    .trustpilot-summary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        padding: 25px 0;
+        margin-top: 20px;
+        border-top: 1px solid #e6e6e6;
+        background: linear-gradient(to right, #f8f8f8, white, #f8f8f8);
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        
+        .summary-text {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            
+            span {
+                font-size: 16px;
+            }
+            
+            .rating {
+                font-weight: 600;
+                color: variables.$color-trustpilot;
+                position: relative;
+                
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    background-color: variables.$color-trustpilot;
+                    opacity: 0.3;
+                }
+            }
+        }
+        
+        .stars {
+            display: flex;
+            gap: 4px;
 
-    .note {
-        gap: 3px;
-        margin: 12px 0;
+            .star {
+                background-color: variables.$color-trustpilot;
+                width: 30px;
+                aspect-ratio: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
 
-        .star {
-            background-color: variables.$color-trustpilot;
-            width: 30px;
-            aspect-ratio: 1;
+                > .ico {
+                    width: 20px;
+                    position: relative;
+                    z-index: 10;
+                }
+
+                &.-half:before {
+                    content: '';
+                    height: 100%;
+                    width: 50%;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 5;
+                    background-color: variables.$color-light-grey;
+                }
+            }
+        }
+        
+        .rating-text {
+            color: #555;
+            font-size: 15px;
+            font-weight: 500;
+        }
+    }
+
+    .reviews-wrapper {
+        position: relative;
+        
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid #e6e6e6;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-
-            > .ico {
-                width: 20px;
-                position: relative;
-                z-index: 10;
+            font-size: 20px;
+            z-index: 10;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0.8;
+            
+            &:hover {
+                opacity: 1;
+                transform: translateY(-50%) scale(1.1);
             }
-
-            &.-half:before {
-                content: '';
-                height: 100%;
-                width: 50%;
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: 5;
-                background-color: variables.$color-light-grey;
+            
+            &.left {
+                left: -20px;
             }
+            
+            &.right {
+                right: -20px;
+            }
+        }
+    }
+
+    .trustpilot-reviews {
+        scroll-behavior: smooth;
+        scrollbar-width: none; // Cache la scrollbar sur Firefox
+        -ms-overflow-style: none; // Cache la scrollbar sur IE/Edge
+        
+        &::-webkit-scrollbar {
+            display: none; // Cache la scrollbar sur Chrome/Safari
+        }
+        
+        transition: transform 0.3s ease;
+        
+        .review-card {
+            transition: transform 0.3s ease;
+            
+            &:hover {
+                transform: translateY(-5px);
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .trustpilot-container {
+        .section-title {
+            height: 60px;
+            margin: -10px auto 20px;
+            
+            .title-text {
+                font-size: 20px;
+                padding: 0 20px;
+            }
+        }
+        .trustpilot-summary {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+            padding: 20px;
+            
+            .summary-text {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .rating-text {
+                margin-top: 5px;
+            }
+        }
+        .scroll-button {
+            display: none; // Cache les boutons sur mobile
         }
     }
 }

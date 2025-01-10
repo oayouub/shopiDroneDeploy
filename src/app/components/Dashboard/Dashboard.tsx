@@ -24,7 +24,12 @@ const Dashboard: React.FC = () => {
       </div>
       <div className="wrapper -large -padded">
         <h2>Vous avez {user ? `${user.username} articles` : 'aucun'} en vente</h2>
-        <ProductList />
+        <ProductList 
+          category=""
+          searchQuery=""
+          userId={user?.id}
+          showUserItems={true}
+        />
       </div>
     </div>
   );

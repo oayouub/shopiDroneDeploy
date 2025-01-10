@@ -1,0 +1,54 @@
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: last baseline;
+    background-color: #f9f9f9;
+    padding: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    .menuItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        position: relative;
+        margin: 10px;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &.drones .image {
+            width: 125px;
+            margin-bottom: -15px;
+        }
+
+        &.telecommandes .image {
+            margin-bottom: -18px;
+        }
+
+        &.electronique .image {
+            width: 100px;
+            margin-bottom: -12px;
+        }
+
+        .image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: -6px;
+            z-index: 1;
+        }
+
+        .label {
+            font-size: 16px;
+            color: #333;
+            background-color: white;
+            padding: 10px 20px;
+            z-index: 0;
+        }
+    }
+}

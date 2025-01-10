@@ -1,0 +1,22 @@
+.add-to-cart-button {
+    width: 100%;
+    padding: 16px 24px;
+    background: #27377c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 16px;
+
+    &:hover {
+        background-color: black;
+    }
+
+    &:disabled {
+        background: #B2BEC3;
+        cursor: not-allowed;
+    }
+} 

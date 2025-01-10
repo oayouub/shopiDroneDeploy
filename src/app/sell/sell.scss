@@ -1,59 +1,283 @@
 @use '../assets/styles/variables';
 
-.page-sell {
-    background-color: variables.$color-light-grey;
-    padding: 30px 0;
+.sell-page {
+    min-height: calc(100vh - 180px);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 60px 20px;
+}
+
+.sell-container {
+    max-width: 1200px;
+    margin: 0 auto;
 
     h1 {
-        font-size: 30px;
-        font-weight: bold;
-        padding-bottom: 10px;
-    }
-
-    .bloc {
-        background-color: variables.$color-white;
-        padding: 30px;
-        margin-bottom: 30px;
-
-        > .img-area {
-            border-radius: 8px;
-            border: dashed 1px variables.$color-grey;
-            height: 100px;
-        }
-
-        > .grid {
-            font-size: 20px;
-
-            > .label {
-                font-weight: bold;
-            }
-
-            .input-text, .text-area {
-                font-size: 20px;
-                border: none;
-                border-bottom: solid 1px variables.$color-grey;
-                background-color: transparent;
-                padding-bottom: 10px;
-                width: 100%;
-                color: variables.$color-black;
-            }
-
-            .text-area {
-                resize: none;
-                height: 150px;
-            }
-        }
-
-        > .separator {
-            background-color: variables.$color-grey;
-            border: none;
-            height: 1px;
-            width: 100%;
-            margin: 30px 0;
-        }
-    }
-
-    .add-btn {
-        margin-left: auto;
+        font-size: 32px;
+        font-weight: 600;
+        color: #2D3436;
+        margin-bottom: 10px;
+        text-align: center;
     }
 }
+
+.sell-form {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+    padding: 32px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.form-section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2D3436;
+        margin-bottom: 16px;
+    }
+
+    .hint {
+        color: #636E72;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+}
+
+.image-upload-container {
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    .image-preview {
+        position: relative;
+        aspect-ratio: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-image {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.8);
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .upload-box {
+        aspect-ratio: 1;
+        border: 2px dashed #B2BEC3;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #636E72;
+        gap: 8px;
+        background: #F8F9FA;
+
+        &:hover {
+            border-color: variables.$color-blue;
+            color: variables.$color-blue;
+            background: #F1F3F5;
+        }
+
+        span {
+            font-size: 14px;
+        }
+    }
+}
+
+.form-group {
+    margin-bottom: 24px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: #2D3436;
+        margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #DFE6E9;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        background: white;
+
+        &:focus {
+            outline: none;
+            border-color: variables.$color-blue;
+            box-shadow: 0 0 0 3px rgba(variables.$color-blue, 0.1);
+        }
+
+        &::placeholder {
+            color: #B2BEC3;
+        }
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .price-input {
+        position: relative;
+        max-width: 200px;
+
+        input {
+            padding-right: 30px;
+        }
+
+        .currency {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #636E72;
+        }
+    }
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background-color: variables.$color-blue;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: darken(variables.$color-blue, 5%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(variables.$color-blue, 0.2);
+    }
+}
+
+.warning-section {
+    padding: 20px;
+    background: rgba(41, 128, 185, 0.05);
+    border-radius: 12px;
+    border-left: 4px solid variables.$color-blue;
+    margin-bottom: 24px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #2D3436;
+        margin-bottom: 16px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #636E72;
+            font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .dot {
+                flex-shrink: 0;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background-color: variables.$color-blue;
+            }
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .sell-container h1 {
+        font-size: 24px;
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sell-page {
+        padding: 16px 0;
+    }
+
+    .sell-form {
+        border-radius: 0;
+        padding: 16px;
+    }
+} 

@@ -13,7 +13,41 @@
 @use "../../components/SellPush/sellpush";
 @use "../../components/Trustpilot/trustpilot";
 @use "../../components/Footer/footer";
+@use "../../components/Card/Card";
 
 @use "../../dashboard/dashboard";
 @use "../../sell/sell";
 @use "../../product/[id]/DetailsItem";
+@use "../../components/ProductSelection/ProductSelection";
+@use "../../auth/AuthPage";
+@use "../../components/Notification/notification";
+
+.grid {
+    display: grid;
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}

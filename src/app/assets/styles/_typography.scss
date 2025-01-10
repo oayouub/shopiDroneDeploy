@@ -2,6 +2,7 @@
 @use "typography-mixins";
 
 * {
+    font-family: 'Montserrat', Arial, sans-serif;
     -webkit-touch-callout: none;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -39,4 +40,18 @@ hr {
 
 .underline {
     text-decoration: underline;
+}
+
+@mixin title-1() {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: variables.$medium;
+    line-height: 42px;
+}
+
+@mixin title-3() {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: variables.$bold;
+    line-height: 24px;
 }

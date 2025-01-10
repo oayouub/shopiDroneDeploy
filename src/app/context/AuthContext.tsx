@@ -2,6 +2,8 @@
 
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { supabase } from '../../supaBase/subabase';
+import { useRouter } from 'next/navigation';
+import Notification from '../components/Notification/Notification';
 
 interface AuthContextType {
   user: any;
@@ -21,6 +23,12 @@ interface Props {
 
 export const AuthProvider: React.FC<Props> = ({ children }) => {
   const [user, setUser] = useState<any>(null);
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: 'success' | 'error';
+    isVisible: boolean;
+  }>({ message: '', type: 'success', isVisible: false });
+  const router = useRouter();
 
   useEffect(() => {
     const fetchSession = async () => {
@@ -41,32 +49,47 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     };
   }, []);
 
+  const showNotification = (message: string, type: 'success' | 'error') => {
+    setNotification({ message, type, isVisible: true });
+    setTimeout(() => {
+      setNotification(prev => ({ ...prev, isVisible: false }));
+    }, 3000);
+  };
+
   const login = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-
-    if (error) {
-      console.error('Erreur de connexion:', error.message);
-      throw new Error(error.message);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      setUser(data?.user);
+      showNotification('Vous êtes connecté avec succès !', 'success');
+    } catch (error) {
+      console.error('Erreur de connexion:', error);
+      showNotification('Erreur de connexion', 'error');
+      throw error;
     }
-
-    setUser(data?.user);
-    console.log('Connexion réussie:', data?.user);
   };
 
   const logout = async () => {
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-      console.error('Erreur de déconnexion:', error.message);
-      throw new Error(error.message);
+    try {
+      await supabase.auth.signOut();
+      setUser(null);
+      showNotification('Vous avez été déconnecté', 'error');
+      setTimeout(() => {
+        router.push('/auth');
+      }, 100);
+    } catch (error) {
+      console.error('Erreur de déconnexion:', error);
+      throw error;
     }
-
-    setUser(null);
-    console.log('Déconnexion réussie');
   };
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
+      <Notification 
+        message={notification.message}
+        type={notification.type}
+        isVisible={notification.isVisible}
+      />
       {children}
     </AuthContext.Provider>
   );

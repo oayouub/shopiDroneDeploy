@@ -2,15 +2,19 @@
 
 'use client';
 
-import React from 'react';
 import { AuthProvider } from '@/app/context/AuthContext';
+import { CartProvider } from '@/app/context/CartContext';
 
-interface Props {
-  children: React.ReactNode;
+export default function ClientProvider({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    return (
+        <AuthProvider>
+            <CartProvider>
+                {children}
+            </CartProvider>
+        </AuthProvider>
+    );
 }
-
-const ClientProvider: React.FC<Props> = ({ children }) => {
-  return <AuthProvider>{children}</AuthProvider>;
-};
-
-export default ClientProvider;

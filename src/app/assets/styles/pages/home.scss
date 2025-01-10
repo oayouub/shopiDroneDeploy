@@ -1,6 +1,8 @@
 @use '../variables';
 
 .page-home {
+    font-family: 'Montserrat', Arial, sans-serif;
+    
     .banner-wrapper {
         position: relative;
         margin-bottom: 17px;
@@ -8,8 +10,8 @@
 
         .banner-container {
             position: relative;
-            width: 100%;
-            height: 100vh;
+            width: 100vw;
+            height: 100%;
             overflow: hidden;
         }
 
@@ -18,23 +20,42 @@
             z-index: 10;
             position: relative;
             object-position: center;
+            width: 100%;
+            height: auto;
         }
 
         .sign-wrapper {
             position: absolute;
             top: 50%;
             transform: translate(-50%, -50%);
-            left: 50%;
+            left: 40%;
             z-index: 20;
 
             .sign {
                 width: 384px;
                 padding: 33px;
+                border-radius: 5px;
                 background-color: variables.$color-white;
 
                 >.sell-btn {
                     margin: 34px 0 13px;
                     width: 100%;
+
+                    &:hover {
+                        background: #3f4f8f;
+                        color: white;
+                        box-shadow: 0 4px 8px #3f4f8f34;
+                    }
+                }
+
+                .title-1 {
+                    font-family: 'Montserrat', Arial, sans-serif;
+                    font-weight: 600;
+                }
+                
+                .btn, .link {
+                    font-family: 'Montserrat', Arial, sans-serif;
+                    font-weight: 500;
                 }
             }
         }
