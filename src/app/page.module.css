@@ -82,7 +82,6 @@
 }
 
 a.primary {
-  background: var(--foreground);
   color: var(--background);
   gap: 8px;
 }

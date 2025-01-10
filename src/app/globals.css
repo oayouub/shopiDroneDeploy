@@ -1,3 +1,7 @@
+:root {
+  --foreground: #171717;
+}
+
 
 html,
 body {
@@ -6,7 +10,6 @@ body {
 }
 
 body {
-  color: var(--foreground);
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
